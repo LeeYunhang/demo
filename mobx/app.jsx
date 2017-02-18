@@ -19,7 +19,7 @@ class TodoList {
 
   add(title) {
     return this.todos.push(new Todo(title))
-  } 
+  }
 }
 
 
@@ -29,7 +29,7 @@ class TodoListView extends React.Component {
     super()
     this.state = { title: '' }
   }
-  
+
   render() {
     return (
       <div>
@@ -41,7 +41,7 @@ class TodoListView extends React.Component {
         <button onClick={() => this.props.todoList.add(this.state.title)}>增加</button>
       </div>
     )
-  } 
+  }
 }
 
 const TodoView = observer(({ todo }) => (

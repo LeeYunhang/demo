@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="./element.test.js">
+  </script>
+  <style>
+     * {
+       display: inline
+     }
+  </style>
+  <script>
+    onload = () =>{
+      const root = document.getElementById('root')
+    var ul = new Element('ul', {id: 'list'}, [
+  new Element('li', {class: 'item'}, ['Item 1']),
+  new Element('li', {class: 'item'}, ['Item 2']),
+  new Element('li', {class: 'item'}, ['Item 3'])
+]).render()
+console.dir(ul)
+  root.appendChild(ul)
+    }
+  </script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+
+  </div>
+</body>
+</html>
