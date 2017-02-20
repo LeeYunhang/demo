@@ -72,13 +72,13 @@
 
 "use strict";
 const REPLACE = Symbol('replace');
-/* harmony export (immutable) */ __webpack_exports__["c"] = REPLACE;
+/* harmony export (immutable) */ __webpack_exports__["a"] = REPLACE;
 
 const PROPS = Symbol('props');
 /* harmony export (immutable) */ __webpack_exports__["b"] = PROPS;
 
 const TEXT = Symbol('text');
-/* harmony export (immutable) */ __webpack_exports__["a"] = TEXT;
+/* harmony export (immutable) */ __webpack_exports__["c"] = TEXT;
 
 const REORDER = Symbol('reorder');
 /* harmony export (immutable) */ __webpack_exports__["d"] = REORDER;
@@ -92,7 +92,7 @@ const REORDER = Symbol('reorder');
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_list_diff2__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_list_diff2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_list_diff2__);
-/* harmony export (immutable) */ __webpack_exports__["a"] = diff;
+/* unused harmony export default */
 
 
 
@@ -113,7 +113,7 @@ function dfsWalk(oldNode, newNode, index) {
 
   if (!newNode) {} else if (typeof newNode === 'string' && typeof oldNode === 'string') {
     if (newNode !== oldNode) {
-      currentPatches.push({ type: __WEBPACK_IMPORTED_MODULE_0__util__["a" /* TEXT */], node: newNode });
+      currentPatches.push({ type: __WEBPACK_IMPORTED_MODULE_0__util__["c" /* TEXT */], node: newNode });
     }
   } else if (oldNode.tagName === newNode.tagName && oldNode.key === newNode.key) {
     const diffPatches = diffProps(oldNode, newNode);
@@ -126,7 +126,7 @@ function dfsWalk(oldNode, newNode, index) {
       diffChildren(oldNode.children, newNode.children, currentPatches, index);
     }
   } else {
-    currentPatches.push({ type: __WEBPACK_IMPORTED_MODULE_0__util__["c" /* REPLACE */], node: newNode });
+    currentPatches.push({ type: __WEBPACK_IMPORTED_MODULE_0__util__["a" /* REPLACE */], node: newNode });
   }
 
   patches[index] = currentPatches.length ? currentPatches : [];
@@ -209,7 +209,7 @@ let Element = class Element {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(0);
-/* harmony export (immutable) */ __webpack_exports__["a"] = patch;
+/* unused harmony export default */
 
 
 let index = 0;
@@ -237,13 +237,13 @@ function dfsWalk(node) {
 function applyPatches(node, currentPatches) {
   currentPatches.forEach((patch, i) => {
     switch (patch.type) {
-      case __WEBPACK_IMPORTED_MODULE_0__util__["c" /* REPLACE */]:
+      case __WEBPACK_IMPORTED_MODULE_0__util__["a" /* REPLACE */]:
         let newNode = typeof patch.node === 'string' ? document.createTextNode(patch.node) : patch.node.render();
         break;
       case __WEBPACK_IMPORTED_MODULE_0__util__["b" /* PROPS */]:
         setProps(node, patch.props);
         break;
-      case __WEBPACK_IMPORTED_MODULE_0__util__["a" /* TEXT */]:
+      case __WEBPACK_IMPORTED_MODULE_0__util__["c" /* TEXT */]:
         node.textContent = patch.node;
         break;
       case __WEBPACK_IMPORTED_MODULE_0__util__["d" /* REORDER */]:
@@ -461,17 +461,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var ul1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('ul', { id: 'list' }, [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('li', { class: 'item' }, ['Item 1']), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('li', { class: 'item' }, ['Item 2']), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('li', { class: 'item' }, ['Item 3'])]);
-
-var ul2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('ul', { id: 'list' }, [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('li', { class: 'item' }, ['Item 1']), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('li', { class: 'item' }, ['Item 2']), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('li', { class: 'item1' }, ['Item 4'])]);
-
+let lis = [];
+var ul = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('ul', { id: 'list' }, lis);
 var root = document.getElementById('root');
-root.appendChild(ul1.render());
 
-document.addEventListener('click', () => {
-  console.log('ok');
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__patch__["a" /* default */])(document.getElementById('list'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__diff__["a" /* default */])(ul1, ul2));
-});
+for (let i = 0; i < 10000; ++i) {
+  lis.push(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__element__["a" /* default */])('li', { class: 'item' }, ['Item ' + i]));
+}
+
+root.appendChild(ul.render());
 
 /***/ })
 /******/ ]);

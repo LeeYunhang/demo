@@ -2,24 +2,15 @@ import el from './element'
 import diff from './diff'
 import patch from './patch'
 
-var ul1 = el('ul', {id: 'list'}, [
-  el('li', {class: 'item'}, ['Item 1']),
-  el('li', {class: 'item'}, ['Item 2']),
-  el('li', {class: 'item'}, ['Item 3'])
-])
 
-var ul2 = el('ul', {id: 'list'}, [
-  el('li', {class: 'item'}, ['Item 1']),
-  el('li', {class: 'item'}, ['Item 2']),
-  el('li', {class: 'item1'}, ['Item 4'])  
-])
-
-
+let lis = []
+var ul = el('ul', {id: 'list'}, lis)
 var root = document.getElementById('root')
-root.appendChild(ul1.render())
 
-document.addEventListener('click', () => {
-  console.log('ok')
-  patch(document.getElementById('list'), diff(ul1, ul2))
+
+for(let i = 0; i < 10000; ++i) {
+  lis.push(el('li', {class: 'item'}, ['Item ' + i]))
   
-})
+}
+
+root.appendChild(ul.render())
