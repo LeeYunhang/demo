@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    main {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+
+    }
+
+    html, body {
+      height: 100%;
+      font-family: mdn
+    }
+
+    @font-face {
+      font-family: "Open Sans", mdn;
+      src: url("https://mdn.mozillademos.org/files/2468/VeraSeBd.ttf")
+    }
+
+    article {
+      align-self: center;
+      width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #4d4e53
+    }
+    section {
+      background: lightgray;
+      padding: 16px;
+      border-radius: 8px;;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <main>
+    <article>
+      <h2>What the Virtual Viewport?</h2>
+      <section>
+        In Chrome M40 there is a change to the viewport that is pretty subtle, but should make a big difference to users.
+
+When mobile browsers started out, the lack of a viewport meta tag meant they would make the web page think it had approximately 980px of screen real estate and render at this size. With a viewport meta tag, developers could define the width, most common of which is "device-width", which sets the screen size to that of the device. You can learn more on Web Fundamentals.
+The way Rick Byers describes the virtual viewport is as follows: the idea of the virtual viewport is to split the notion of "the viewport" into two, "the layout viewport" (where fixed position items are attached) and "the visual viewport" (What the users actually see).
+      </section>
+    </article>
+  </main>
+</body>
+</html>

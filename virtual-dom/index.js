@@ -14,3 +14,9 @@ for(let i = 0; i < 10000; ++i) {
 }
 
 root.appendChild(ul.render())
+
+
+var start =  async function () {
+  console.log('start')
+  return sleep(1000).then(() => conosole.log('end'))
+}
