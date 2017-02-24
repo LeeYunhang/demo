@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>动画效果演示</title>
+  <style>
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+  }
+
+    button {
+      align-self: center;
+      font-size: 1.4rem;
+    }
+
+    @keyframes test {
+      0% {
+        transform: scale(1, 1);
+      }
+      50% {
+        transform: scale(2, 2);
+      }
+
+      100% {
+        transform: scale(3, 3);
+      }
+    }
+
+    button:hover {
+      animation-duration: 1s;
+      animation-name: test;
+      animation-delay: 0;
+      animation-iteration-count: 1;
+      animation-direction: reverse;
+      animation-fill-mode: forwards
+    }
+  </style>
+</head>
+<body>
+  <button>CLICK ME!</button>
+</body>
+</html>
