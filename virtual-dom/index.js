@@ -4,19 +4,23 @@ import patch from './patch'
 
 
 let lis = []
-var ul = el('ul', {id: 'list'}, lis)
+var ul = el('ul', {
+  id: 'list'
+}, lis)
 var root = document.getElementById('root')
 
 
-for(let i = 0; i < 10000; ++i) {
-  lis.push(el('li', {class: 'item'}, ['Item ' + i]))
-  
+for (let i = 0; i < 10000; ++i) {
+  lis.push(el('li', {
+    class: 'item'
+  }, ['Item ' + i]))
+
 }
 
 root.appendChild(ul.render())
 
 
-var start =  async function () {
+var start = async function () {
   console.log('start')
   return sleep(1000).then(() => conosole.log('end'))
 }
