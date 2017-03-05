@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script defer="defer">
+    onload = () => {
+      console.group('parent')
+      console.log(window.name)
+      console.groupEnd()
+
+      let outer = document.getElementById('outer')
+      
+      let outerWindow =  outer.contentWindow
+      // let title = outerWindow.document.getElementById('title')
+      outerWindow.postMessage('hello world')
+      
+    }
+  </script>
+</head>
+<body>
+  <iframe id="outer" src="./subdomain/index.html" width="400" height="400"></iframe>
+</body>
+</html>
