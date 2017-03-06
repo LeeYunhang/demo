@@ -1,8 +1,4 @@
 onmessage = event => {
-  switch(event.data) {
-    case 'start':
-      postMessage('I\'m started!')
-      while(true) {}
-      break
-  }
+  let { id, code } = event.data
+  postMessage({ id, evaluated: eval(code? code:'1+1') })
 }

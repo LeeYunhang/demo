@@ -9,13 +9,44 @@
     onload = () => {
       let worker = new Worker('worker.js')
 
-      let button = document.getElementsByTagName('button')[0]
-      button.addEventListener('click', () => worker.postMessage('start'))
-      worker.addEventListener('message', event => alert(event.data))
+
+      let asyncEval = (() => {
+        let generateRandom = (listeners) => {
+          while(true) {
+            let tmp = Math.random() * Number.MAX_VALUE + ''
+            if (!listeners.hasOwnProperty(tmp)) {
+              return tmp
+            }
+          }
+        }
+        let listeners = {}        
+
+        worker.onmessage = event => {
+          if (listeners[event.data.id]) {
+            listeners[event.data.id](event.data.evaluated)
+            delete listeners[event.data.id]
+          }
+        }
+
+        return (code, listener) => {
+          let id = generateRandom(listeners)
+          listeners[id] = listener
+          worker.postMessage({ id, code })
+        }
+      })()
+
+      let button = document.querySelector('button')
+      let input = document.querySelector('input')
+      let span = document.querySelector('span')
+      button.onclick = event => {
+        asyncEval(input.value, (evaluated) => span.textContent = evaluated)
+      }
     }
   </script>
 </head>
 <body>
+  <input type="text">
   <button>开始</button>
+  结果：<span></span>
 </body>
 </html>
