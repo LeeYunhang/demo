@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script defer="defer">
@@ -14,13 +15,29 @@
       let outer = document.getElementById('outer')
       
       let outerWindow =  outer.contentWindow
-      // let title = outerWindow.document.getElementById('title')
-      outerWindow.postMessage('hello world')
       
+      let button = document.getElementById('btn')
+      button.addEventListener('click', function(event) {
+        let  input = button.previousSibling.previousSibling
+        
+        try {
+          if (input.nodeType !== 1) {
+            throw new TypeError()
+          }
+
+          let span = document.createElement('span')
+          span.innerHTML = input.value
+          document.body.appendChild(span)
+        } catch(e) {
+          alert(e)
+        }
+      }, false)
     }
   </script>
 </head>
 <body>
   <iframe id="outer" src="./subdomain/index.html" width="400" height="400"></iframe>
+  <input id="input" type="text">
+  <button id="btn">CLICK ME!</button>
 </body>
 </html>
