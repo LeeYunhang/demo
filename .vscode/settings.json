@@ -3,6 +3,7 @@
   "background.enabled": true,
   "editor.minimap.enabled": true,
   "background.useDefault": false,
+  "editor.dragAndDrop": true,
   "background.customImages": [
     "file:///home/mrcode/Pictures/动漫/少女.jpg"
   ],

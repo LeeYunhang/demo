@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script defer="defer">
+    if (localStorage.getItem('stu')) {
+      let stu = JSON.parse(localStorage.getItem('stu'))
+      console.dir(stu)
+    } else {
+      class Student {
+        constructor(name, age) {
+          this.name = name
+          this.age = age
+        }
+      }
+
+      const stu = new Student('mrcode', 20)
+      localStorage.setItem('stu', JSON.stringify(stu))
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,7 +1,20 @@
-var assert = require('assert');
-var should = require('should')
+let fs = require('fs')
 
-it('should return -1 when the value is not present', function() {
-  assert.equal(-1, [1,2,3].indexOf(4));
-  [1, 2, 3].indexOf(0).should.equal(-1)
+let getFile = filename => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filename, (err, data) => {
+      if (err) { reject(err) }
+      else {
+        resolve()
+      } 
+    })
+  })
+}
+
+describe('File', () => {
+  describe('Get a file\' content', () => {
+    it('should return the content of specified file', function(done){
+      getFile('./test.js').then(done)
+    })
+  })
 })

@@ -1,7 +1,7 @@
-abstract class Item {
-  abstract name(): String
-  abstract packing(): Packing
-  abstract price(): Number
+interface Item {
+  name(): String
+  packing(): Packing
+  price(): Number
 }
 
 abstract class Packing {
@@ -20,16 +20,20 @@ class Wrapper extends Packing {
   }
 }
 
-abstract class Burger extends Item {
+abstract class Burger implements Item {
   packing(): Packing {
     return new Wrapper()
   }
+  abstract name():String
+  abstract price():Number
 }
 
-abstract class ColdDrink extends Item {
+abstract class ColdDrink implements Item {
   packing(): Packing {
     return new Bottle()
   }
+  abstract name():String
+  abstract price():Number
 }
 
 class Coke extends ColdDrink {
@@ -104,11 +108,12 @@ class MealBuilder {
   }
 }
 
-(function() {
+let a_: void = function() {
   let mealBuilder = new MealBuilder()
   let vegMeal = mealBuilder.prepareVegMeal()
   let chickenMeal = mealBuilder.prepareVegMeal()
 
   vegMeal.showItems()
   chickenMeal.showItems()
-})()
+}()
+
