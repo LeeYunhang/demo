@@ -6,13 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script>
-    onload = function() {
-      window.name = 'hello world'
-      window.addEventListener('message', msg => alert(msg))
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
     }
+
   </script>
 </head>
-<body>                                                          
-  <h1 id="title">我是 subdomain</h1>
+<body>
+  <div class="wrapper">
+    Hello world
+  </div>
 </body>
-</html>                         
+</html>
