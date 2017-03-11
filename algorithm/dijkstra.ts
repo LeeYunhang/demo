@@ -1,5 +1,6 @@
 
 type Graph = Array<Array<number>>
+const MAX_VALUE = Number.MAX_VALUE / 2
 
 let graph: Graph = [
   [0, 6, 3, -1, -1, -1],
@@ -12,38 +13,33 @@ let graph: Graph = [
 
 function dijkstra(graph: Graph) {
   let copyedGraph :Graph = graph.map((value, index) => {
-    return value.map(v => (v === -1? Number.MAX_VALUE / 2 : v))
+    return value.map(v => (v === -1? MAX_VALUE / 2 : v))
   })  
-  let shortestPath = copyedGraph[0].slice()
-  let activeNodeIndex = 0
-  const U = new Set<number>(shortestPath.map((v, i) => i))
+  const U = new Set<number>(copyedGraph[0].map((v, i) => i))
+  const S = new Set<number>()
 
+  S.add(0)
+  U.delete(0)
   while (U.size) {
-    let activeNode = copyedGraph[activeNodeIndex]
-    let minObj = activeNode.reduce((previous, current, index) => {
-      let distance = shortestPath[activeNodeIndex]
-      let throughActiveNodePath = distance + copyedGraph[activeNodeIndex][current]
-      let minDistance = throughActiveNodePath
+    let minDistance = MAX_VALUE
+    let minIndex = -1
 
-      if (throughActiveNodePath < copyedGraph[0][current]) {
-        copyedGraph[0][current] = throughActiveNodePath
-      } else {
-        minDistance = copyedGraph[0][current]
+    S.forEach(value => copyedGraph[value].forEach(v => {
+      if (copyedGraph[value][v] !== MAX_VALUE / 2 && !S.has(v)) {
+        const tmp = copyedGraph[0][value] + copyedGraph[value][v]
+        const flag = minDistance < tmp
+
+        minDistance = flag? minDistance : tmp
+        minIndex = flag? minIndex : v
+        if (tmp < copyedGraph[0][v]) { copyedGraph[0][v] = tmp }
       }
+    }))
 
-      const tmp = minDistance < previous.value
-      return {
-        value: tmp? previous.value : current,
-        index: tmp? previous.index : index
-      } 
-    }, { value: Number.MAX_VALUE, index: -1 })
-
-    U.delete(activeNodeIndex)
-    activeNodeIndex = minObj.index
-    shortestPath[activeNodeIndex] = minObj.value
-
-    return shortestPath
+    S.add(minIndex)
+    U.delete(minIndex)
   }
+
+  return copyedGraph[0]
 }
 
 console.log(dijkstra(graph))
