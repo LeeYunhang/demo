@@ -24,3 +24,5 @@ function topoSort(graph: Graph) : number[] | undefined {
 
   return indegree
 }
+
+history.back()
