@@ -1,0 +1,20 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+#wrapper {
+  -ms-grid-row-align: center;
+  align-self: center;
+  width: 500px;
+  height: 350px;
+  border-radius: 4px;
+  background-color: lightgray;
+  padding: 16px;
+}

@@ -1,0 +1,17 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#wrapper {
+  align-self: center;
+  width: 500px;
+  height: 350px;
+  border-radius: 4px;
+  background-color: lightgray;
+  padding: 16px;
+}
