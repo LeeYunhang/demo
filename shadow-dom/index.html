@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  
+</head>
+<body>
+  <script>
+    customElements.define('fancy-tabs', class extends HTMLElement {
+      constructor() {
+        super()
+        const shadowRoot = this.attachShadow({ mode: 'open' })
+
+        shadowRoot.innerHTML = `
+          <div id="tabs">
+            <slot id="tabsSlot" name="title"></slot>
+          </div>
+          <div id="panels">
+            <slot id="panelsSlot"></slot>
+          </div>
+        `
+
+        shadowRoot.innerHTML += `
+          <style>
+    #panels {
+      box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+      background: white;
+      border-radius: 3px;
+      padding: 16px;
+      height: 250px;
+      overflow: auto;
+    }
+    #tabs {
+      display: inline-flex;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    #tabsSlot::slotted(*) {
+      font: 400 16px/22px 'Roboto';
+      padding: 16px 8px;
+      ...
+    }
+    #tabsSlot::slotted([aria-selected="true"]) {
+      font-weight: 600;
+      background: white;
+      box-shadow: none;
+    }
+    #panelsSlot::slotted([aria-hidden="true"]) {
+      display: none;
+    }
+  </style>
+  <div id="tabs">
+    <slot id="tabsSlot" name="title"></slot>
+  </div>
+  <div id="panels">
+    <slot id="panelsSlot"></slot>
+  </div>
+        `
+
+      }
+    })
+  </script>
+  <fancy-tabs>
+    <button slot="title">Title 1</button>
+    <button slot="title" selected>Title 2</button>
+    <section>content panel 1</section>
+    <button slot="title">Title 3</button>
+    <section>content panel 2</section>
+    <section>content panel 3</section>
+  </fancy-tabs>
+</body>
+</html>
