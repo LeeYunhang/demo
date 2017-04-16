@@ -1,0 +1,9 @@
+div {
+  margin: calc(50% - 200px) auto 0 auto;
+  width: 400px;
+  height: 400px;
+  background-color: hsla(120, 50%, 50%, .4);
+  background-clip: padding-box;
+  border: 10px solid hsla(60, 50%, 50%, .3); 
+  border-radius: 5px;
+}
