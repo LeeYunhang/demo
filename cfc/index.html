@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CFC</title>
+  <link rel="stylesheet" href="./cfc.css">
+</head>
+<body>
+  <!--keyword  identifies string symbol function-->
+  <main>
+    <span class="keyword">async</span>
+    <span class="keyword">function</span>
+    <span class="identifies">joinCFC</span><span class="symbol">() {</span>
+    <br>
+    <!--<span class="keyword">  let</span>
+    <span class="identifies">user</span>
+    <span class="symbol">= {}</span>
+    <br>-->
+    <span class="keyword">  try</span>
+    <span class="symbol">  {</span>
+    <br>
+    <span class="keyword">    let</span>  
+    <span class="identifies">response</span>
+    <span class="symbol">=</span>
+    <span class="keyword">await</span>
+    <span class="function">fetch</span><span class="symbol">(</span><span class="string">'/join-us'</span><span class="symbol">,</span>
+    <span class="symbol">{</span>
+    <br>
+    <span class="identifies">      method</span><span class="symbol">:</span>
+    <span class="string">'POST'</span><span class="symbol">,</span>
+    <br>
+    <span class="identifies">      body</span><span class="symbol">:</span>
+    <span class="identifies">JSON</span><span class="symbol">.</span><span class="function">stringify</span><span class="symbol">({</span>
+    <br>
+    <span class="identifies">        username</span><span class="symbol">:</span>
+    <span class="string">'</span><span class="string" contenteditable spellcheck="false"></span><span class="string">'</span><span class="symbol">,</span>
+    <span class="comment">// enter your name</span>
+    <br>
+    <span class="identifies">           email</span><span class="symbol">:</span>
+    <span class="string">'</span><span class="string" contenteditable spellcheck="false"></span><span class="string">'</span><span class="symbol">,</span>
+    <span class="comment">// enter your email</span>
+    <br>
+    <span class="identifies">              QQ</span><span class="symbol">:</span>
+    <span class="string">'</span><span class="string" contenteditable spellcheck="false"></span><span class="string">'</span><span class="symbol">,</span>
+    <span class="comment">// enter your qq</span>
+    <br>
+    <span class="symbol">    })</span>
+    <br>
+    <br>
+    
+    <span class="keyword">    if</span><span class="symbol">(</span><span class="identifies">response</span><span class="symbol">.</span><span class="identifies">status</span>
+    <span class="symbol">!==</span>
+    <span class="number">201</span><span class="symbol">) {</span>
+    <br>
+    <span class="keyword">      throw</span>
+    <span class="keyword">new</span>
+    <span class="identifies">Error</span><span class="symbol">(</span><span class="string">'Failed to submit POST request'</span><span class="symbol">)</span>
+    <br>
+    <span class="symbol">    }</span>
+    <span class="keyword">else</span>
+    <span class="symbol">{</span>
+    <br>
+    <span class="identifies">      console</span><span class="symbol">.</span><span class="function">log</span><span class="symbol">(</span><span class="string">'succeed!'</span><span class="symbol">)</span>
+    <br>
+    <span class="symbol">    }</span>
+    <br>
+    <span class="symbol">  }</span>
+    <span class="keyword">catch</span>
+    <span class="symbol">(</span><span class="identifies">error</span><span class="symbol">) {</span>
+    <br>
+    <span class="identifies">    console</span><span class="symbol">.</span><span class="function">error</span><span class="symbol">(</span><span class="identifies">error</span><span class="symbol">)</span>
+    <br>
+    <span class="symbol">  }</span>
+    <br>
+    <span class="symbol">}</span>
+    <br>
+    <br>
+    <span id="submit" class="function">joinCFC</span><span class="symbol">()</span>
+  </main>
+</body>
+</html>

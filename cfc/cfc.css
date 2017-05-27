@@ -1,0 +1,65 @@
+body {
+  background-color: hsl(240deg, 20%, 10%);
+}
+
+html, body {
+  height: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  margin: 20% auto auto;
+  background-color: lightgray;
+  width: 60%;
+  padding: 1.5em 16px;
+  border-left: 4px solid gray;
+  line-height: 1.5;
+  background-image: repeating-linear-gradient(lightgray 0, lightgray 1.5em, rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .2) 3em);
+}
+
+main span {
+  white-space: pre;
+}
+
+.keyword {
+  color: blueviolet;
+}
+
+.symbol {
+  color: darkgrey;
+}
+
+.function {
+  color: lightcoral;
+}
+
+.string {
+  color: limegreen;
+}
+
+.number {
+  color: brown;
+}
+
+.comment {
+  color: darkgrey;
+}
+
+main input {
+  background: rgba(255, 255, 255, .1);
+  outline: none;
+  border: 0;
+  width: auto;
+  color: limegreen;
+  
+}
+
+#submit {
+  border-bottom: 1px solid;
+  cursor: pointer;
+}
